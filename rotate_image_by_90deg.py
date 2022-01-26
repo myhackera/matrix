@@ -15,9 +15,14 @@ class Solution:
                 j += 1 
                 k -= 1
     
-    
+    # FOR LEFT ROTATION
     def rotate(self, matrix: List[List[int]]) -> None:
         self.transpose(matrix)
         self.reverseCol(matrix)
         return matrix
         
+   # FOR RIGHT ROTATION
+    def rotate(self, matrix: List[List[int]]) -> None:
+        self.reverseCol(matrix)
+        self.transpose(matrix)
+        return matrix
