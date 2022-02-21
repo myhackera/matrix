@@ -14,3 +14,49 @@ print(mat)
 
 # SOLTION 2.)
 ===========================>
+import numpy as np
+
+mat = [[1,2,3],[4,5,6],[7,8,9]]
+
+n = len(mat)
+mat = np.array(mat)
+mat.transpose()
+print(mat)
+
+# SOLUTION 3.) 
+=======================>
+
+res = [*zip(*mat)]
+print(res)
+
+# SOLUTION 4.) 
+=======================================>
+
+M = 3
+N = 4
+
+def transpose(A, B):
+
+	for i in range(N):
+		for j in range(M):
+			B[i][j] = A[j][i]
+
+# driver code
+A = [ [1, 1, 1, 1],
+	[2, 2, 2, 2],
+	[3, 3, 3, 3]]
+
+
+# To store result
+B = [[0 for x in range(M)] for y in range(N)]
+
+transpose(A, B)
+
+print("Result matrix is")
+for i in range(N):
+	for j in range(M):
+		print(B[i][j], " ", end='')
+	print()
+
+		print(B[i][j], " ", end='')
+	print()
