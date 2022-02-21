@@ -1,0 +1,54 @@
+class Solution:
+    def isValidRow(self, arr, row):
+        
+        s = set()
+        for i in range(0, 9):
+            
+            if arr[row][i] in s:
+                return False
+            if arr[row][i] != '.':
+                s.add(arr[row][i])
+        return True
+    
+    def isValidCol(self, arr, col):
+        
+        s = set()
+        for i in range(0, 9):
+            
+            if arr[i][col] in s:
+                return False
+            if arr[i][col] != '.':
+                s.add(arr[i][col])
+        return True
+    
+    def isValidBox(self,arr, startRow, startCol):
+        
+        s = set()
+        for row in range(0, 3):
+            for col in range(0, 3):
+                
+                curr = arr[row+startRow][col+startCol]
+                
+                if curr in s:
+                    return False
+                if curr != '.':
+                    s.add(curr)
+        return True
+            
+    
+    def isValid(self, arr, row, col):
+        return self.isValidRow(arr, row) and self.isValidCol(arr, col) and self.isValidBox(arr, row-row%3, col-col%3)
+    
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        
+        n = len(board)
+        m = len(board[0])
+        if m != n:
+            return False
+            
+        for i in range(n):
+            for j in range(n):
+                if not self.isValid(board, i, j):
+                    return False
+        return True
+                    
