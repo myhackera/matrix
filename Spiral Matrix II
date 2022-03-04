@@ -1,0 +1,36 @@
+Variation of spiral matrix
+---------------------------------------
+
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        
+        m = n
+        k = l = 0
+        count = 1
+        mat = [[0 for _ in range(n)] for _ in range(n)]
+
+        while k < m and l < n:
+    
+            for p in range(l, n):
+                mat[k][p] = count
+                count += 1 
+            k += 1 
+
+            for p in range(k, m):
+                mat[p][n-1] = count
+                count += 1 
+            n -= 1  
+    
+            if k < m:
+                for p in range(n-1, l-1, -1):
+                    mat[m-1][p] = count
+                    count += 1 
+                m -= 1 
+    
+            if l < n:
+                for p in range(m-1, k-1 , -1):
+                    mat[p][l] = count
+                    count += 1 
+                l += 1
+                
+        return mat
