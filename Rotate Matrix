@@ -1,0 +1,32 @@
+
+def rotateMatrix(mat, n, m):
+    row = col = 0
+    lastrow = n
+    lastcol = m
+    while row < lastrow and col < lastcol:
+        if row+1 == lastrow or col+1 == lastcol:
+            break
+        prev = mat[row+1][col]
+        for i in range(col, lastcol ,1):
+            curr = mat[row][i]
+            mat[row][i] = prev
+            prev = curr
+        row += 1
+        for i in range(row, lastrow ,1):
+            curr = mat[i][lastcol-1]
+            mat[i][lastcol-1] = prev
+            prev = curr
+        lastcol -= 1
+        if row < lastrow:
+            for i in range(lastcol-1, col-1 ,-1):
+                curr = mat[lastrow-1][i]
+                mat[lastrow-1][i] = prev
+                prev = curr
+        lastrow -= 1
+        if col < lastcol:
+            for i in range(lastrow-1, row-1 ,-1):
+                curr = mat[i][col]
+                mat[i][col] = prev
+                prev = curr
+        col += 1
+            
